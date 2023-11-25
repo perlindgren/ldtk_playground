@@ -11,7 +11,7 @@ fn main() {
                     ),
                     ..default()
                 })
-                .set(magePlugin::default_nearest()), // prevents blurry sprites
+                .set(ImagePlugin::default_nearest()), // prevents blurry sprites
         )
         .add_plugins(LdtkPlugin)
         .add_systems(Startup, setup)
