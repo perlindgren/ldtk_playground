@@ -4,7 +4,14 @@ use bevy_ecs_ldtk::prelude::*;
 fn main() {
     App::new()
         .add_plugins(
-            DefaultPlugins.set(ImagePlugin::default_nearest()), // prevents blurry sprites
+            DefaultPlugins
+                .set(AssetPlugin {
+                    watch_for_changes: bevy::asset::ChangeWatcher::with_delay(
+                        std::time::Duration::from_millis(200),
+                    ),
+                    ..default()
+                })
+                .set(magePlugin::default_nearest()), // prevents blurry sprites
         )
         .add_plugins(LdtkPlugin)
         .add_systems(Startup, setup)
